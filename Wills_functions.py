@@ -1,7 +1,7 @@
 import urllib.request
 import json
 import csv
-
+print("Dick")
 def createCSVHeader(fileName):
     with open(fileName, "w",newline="") as csvFile:
         csvFileWriter = csv.writer(csvFile)
