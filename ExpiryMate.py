@@ -1,10 +1,5 @@
 import webapp2
 foodLis = ["Apple","Blueberry","Orange"]
-# import urllib.request
-# import json
-# import csv
-
-
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -16,7 +11,14 @@ class MainPage(webapp2.RequestHandler):
         }
         </style>
         </head>
-        <h1>Welcome  to ExpiryMate!</h1>
+        <h1 id="title">Welcome  to ExpiryMate!</h1>
+        <button onclick="displayText()">Change text</button>
+        <script>
+        function displayText(){
+            document.getElementById("title").innerHTML = "This works"
+        }
+
+        </script>
         ''')
         self.response.write("<p>This app is here to help " +
         "you keep track of your food and the dates at which they expire." +
@@ -28,49 +30,6 @@ class MainPage(webapp2.RequestHandler):
             <input type=submit value="Add to Expiry List">
             </form>
         ''')
-
-    # def createCSVHeader(fileName):
-    #     with open(fileName, "w",newline="") as csvFile:
-    #         csvFileWriter = csv.writer(csvFile)
-    #         csvFileWriter.writerow(['Item','Room Temperature','Refrigerator','Freezer at 0°F'])
-    #
-    # #Appends a row of data about a post to the end of the csv file containing status/post information
-    # def appendToCSV(col_one,col_two,col_three,col_four):
-    #
-    #     with open('FoodList.csv', "a",newline="",encoding='utf-8' ) as csvFile:
-    #         csvFileWriter = csv.writer(csvFile)
-    #         csvFileWriter.writerow([col_one,col_two,col_three,col_four])
-    #     csvFile.close()
-    #
-    # def fillFoodList():
-    #     createCSVHeader('FoodList.csv')
-    #     data = []
-    #     response = urllib.request.urlopen("https://food.unl.edu/food-storage-chart-cupboardpantry-refrigerator-and-freezer")
-    #     line = response.readline()
-    #     foodItem = []
-    #     count = 1
-    #
-    #     while len(line) != 0:
-    #         textLine = line.decode('utf-8')
-    #         #Check to see if the element is a food item
-    #         if textLine[0:4] == "<td>" and textLine[4:11] != "<span c":
-    #             print("")
-    #             cleanWord = []
-    #             #Taking the tags away from the elements
-    #             for letter in textLine[4::]:
-    #                 if letter != '<':
-    #                     cleanWord.append(letter)
-    #                 else:
-    #                     break
-    #                 data = ''.join(cleanWord)
-    #                 if data == '&nbsp;':
-    #                     data = ""
-    #             foodItem.append(data)
-    #             if len(foodItem) == 4:
-    #                 appendToCSV(foodItem[0],foodItem[1],foodItem[2],foodItem[3])
-    #                 foodItem = []
-    #             count = count + 1
-    #         line = response.readline()
 
 class ExpiryList(webapp2.RequestHandler):
     def post(self):
