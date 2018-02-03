@@ -104,5 +104,3 @@ def saveBasket(listOfItems,userName):
             csvFileWriter.writerow([item[0],item[1])
     csvFile.close()
     
-        
-def 
