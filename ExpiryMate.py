@@ -3,9 +3,14 @@ foodLis = ["Apple","Blueberry","Orange"]
 class MainPage(webapp2.RequestHandler):
     def get(self):
         self.response.write('''
-        <header>
+        <head>
+        <style>
+        body{
+            background-color: rgb(0,255,0);
+        }
+        </style>
+        </head>
         <h1>Welcome  to ExpiryMate!</h1>
-        </header>
         ''')
         self.response.write("<p>This app is here to help " +
         "you keep track of your food and the dates at which they expire." +
@@ -25,7 +30,6 @@ class ExpiryList(webapp2.RequestHandler):
         foodLis.append(self.request.get('food'))
         self.response.write(foodLis)
 
-self.response.write('''<link rel="stylesheet" type="text/css" href"stylesheet.css">''')
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/add', ExpiryList),
                                ],

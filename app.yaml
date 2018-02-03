@@ -5,3 +5,5 @@ threadsafe: true
 handlers:
 - url: .*
   script: ExpiryMate.app
+- url: .*
+  static_dir: stylesheet.css
