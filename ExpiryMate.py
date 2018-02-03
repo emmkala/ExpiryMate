@@ -5,6 +5,7 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         self.response.write('''
         <head>
+        <img src="SpriteImage" alt="Character"
         <style>
         body{
             background-color: rgb(0,255,0);
@@ -17,7 +18,6 @@ class MainPage(webapp2.RequestHandler):
         function displayText(){
             document.getElementById("title").innerHTML = "This works"
         }
-
         </script>
         ''')
         self.response.write("<p>This app is here to help " +
