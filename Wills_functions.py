@@ -93,3 +93,4 @@ def addItem(user,item,storageMethod):
                     print("Something went horribly wrong, cannot add item")
                     print((row[column].split(" "))[1] == "week")
         
+def 
