@@ -25,11 +25,25 @@ class MainPage(webapp2.RequestHandler):
         " You are able to add new foods and remove current ones as they "+
         "are eaten.</p>")
         self.response.write('''
+            <form action="/add" method=iterationNumber>
+            <input type=number name=items>
+            <input type=submit value="Number of Food items">
+            </form>''')
+        self.response.write('''
             <form action="/add" method=post>
             <input type=text name=food>
             <input type=submit value="Add to Expiry List">
             </form>
         ''')
+        def iterationNumber(self):
+
+
+        def post(self):
+            self.response.write(
+                # '<h2>Your latest food addition is:</h2> %s' % self.request.get('food')
+            )
+            foodLis.append(self.request.get('food'))
+            self.response.write(foodLis)
 
 class ExpiryList(webapp2.RequestHandler):
     def post(self):
