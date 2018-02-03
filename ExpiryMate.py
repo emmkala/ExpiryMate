@@ -24,6 +24,8 @@ class ExpiryList(webapp2.RequestHandler):
         )
         foodLis.append(self.request.get('food'))
         self.response.write(foodLis)
+
+self.response.write('''<link rel="stylesheet" type="text/css" href"stylesheet.css">''')
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/add', ExpiryList),
                                ],
