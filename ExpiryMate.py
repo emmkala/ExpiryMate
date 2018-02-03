@@ -1,16 +1,24 @@
 import webapp2
 foodLis = ["Apple","Blueberry","Orange"]
+
 class MainPage(webapp2.RequestHandler):
     def get(self):
         self.response.write('''
         <head>
+        <img src="SpriteImage" alt="Character"
         <style>
         body{
             background-color: rgb(0,255,0);
         }
         </style>
         </head>
-        <h1>Welcome  to ExpiryMate!</h1>
+        <h1 id="title">Welcome  to ExpiryMate!</h1>
+        <button onclick="displayText()">Change text</button>
+        <script>
+        function displayText(){
+            document.getElementById("title").innerHTML = "This works"
+        }
+        </script>
         ''')
         self.response.write("<p>This app is here to help " +
         "you keep track of your food and the dates at which they expire." +
@@ -22,6 +30,7 @@ class MainPage(webapp2.RequestHandler):
             <input type=submit value="Add to Expiry List">
             </form>
         ''')
+
 class ExpiryList(webapp2.RequestHandler):
     def post(self):
         self.response.write(
