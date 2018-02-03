@@ -1,15 +1,15 @@
 class Item():
     expired = False
     
-    def __init__(name,daysLeft):
-        this.name = name
-        this.expiry = daysLeft
+    def __init__(self,name,daysLeft):
+        self.name = name
+        self.expiry = daysLeft
 
-    def getExpire():
+    def getExpire(self):
         return this.expired
 
-    def setExpire():
-        this.expired = False
+    def setExpire(self):
+        self.expired = False
 
-    def getName():
-        return this.name
+    def getName(self):
+        return self.name

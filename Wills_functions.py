@@ -1,6 +1,8 @@
 import urllib.request
 import json
 import csv
+from userClass import User
+from itemClass import Item
 
 def createCSVHeader(fileName):
     with open(fileName, "w",newline="") as csvFile:
@@ -28,7 +30,6 @@ def fillFoodList():
         textLine = line.decode('utf-8')
         #Check to see if the element is a food item
         if textLine[0:4] == "<td>" and textLine[4:11] != "<span c":
-            print("")
             cleanWord = []
             #Taking the tags away from the elements
             for letter in textLine[4::]:
@@ -66,7 +67,7 @@ def loadUserData(userName):
     return userFoodList
 
 #Returns None if the item to add is not in our list    
-def addItem(user,item,itemList,storageMethod):
+def addItem(user,item,storageMethod):
     with open('FoodList.csv') as csvFile:
         readCSV = csv.reader(csvFile, delimiter=',')
         for row in readCSV:
@@ -80,14 +81,15 @@ def addItem(user,item,itemList,storageMethod):
                 else:
                     print("Storage method did not match with conditionals")
                     return None
-                if row[column][1] == "week" or row[column][1] == "weeks":
+                if (row[column].split(" "))[1] == "week" or row[column][1] == "weeks":
                     user.addItem(item,int(row[column][0]) * 7)
-                if row[column][1] == "day" or row[column][1] == "days":
+                elif (row[column].split(" "))[1] == "day" or row[column][1] == "days":
                     user.addItem(item,int(row[column][0]))
-                if row[column][1] == "month" or row[column][1] == "months":
+                elif (row[column].split(" "))[1] == "month" or row[column][1] == "months":
                     user.addItem(item,int(row[column][0]) * 30)
-                if row[column][1] == "year" or row[column][1] == "years":
+                elif (row[column].split(" "))[1] == "year" or row[column][1] == "years":
                     user.addItem(item,int(row[column][0]) * 365)
                 else:
                     print("Something went horribly wrong, cannot add item")
+                    print((row[column].split(" "))[1] == "week")
         

@@ -1,44 +1,56 @@
-from Item import Item
+from itemClass import Item
 
 class User():
-    basket = []
 
-    def __init__(userName):
-        this.userName = userName
+    def __init__(self,userName):
+        self.userName = userName
+        self.basket = []
 
-    #From loaded dictionary to object    
-    def fileToObject(foodDict):
-        for item in foodDict:
-            basket.append(newFoodItem(item,foodDict[item]['days']))
-
-    def addItem(name,days):
-        basket.append(newFooditem(name,days))
-            
     #Creates new object via food class 
     def newFoodItem(name,daysLeft):
         newItem = Item(name,daysLeft)
         return newItem
+    
+    #From loaded dictionary to object    
+    def fileToObject(self,foodDict):
+        for item in foodDict:
+            self.basket.append(User.newFoodItem(item,foodDict[item]['days']))
+
+    def addItem(self,name,days):
+        self.basket.append(User.newFoodItem(name,days))
+        
                           
     #Delet by loop return none
-    def deleteItem(name):
+    def deleteItem(self,name):
        for item in basket:
             if item.getName() == name:
-                basket.remove(item)
+                self.basket.remove(item)
 
-    def getTime(name):
-        for item in basket:
+    def getTime(self,name):
+        for item in self.basket:
             if item.getName() == name:
                 return item.getExpire()
         return None
+
+    def getName(self):
+        return self.userName
+
+    def getBasket(self):
+        readBasket = []
+        for item in self.basket:
+            readBasket.append(item.getName())
+        return readBasket
+
+    
 
     
                       
 
     #Returns 2D list in form [[name,days],etc.] for ease of write to file
-    def basketToList():
+    def basketToList(self):
         saveBasket = []
 
-        for item in this.basket:
+        for item in self.basket:
             saveItem = []
             saveItem[0] = item.getName()
             saveItem[1] = item.getExpire()
